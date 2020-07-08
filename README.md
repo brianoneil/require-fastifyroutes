@@ -111,14 +111,5 @@ module.exports = [
 If you don't do either of these, it will just do the normal module loading stuff for it.  Also, you can mix and match between and they will all get loaded in the end.
 
 ## Release History
-* 1.0.0 Updated debug dependency and moved version number
-* 0.1.9 One more update to clean up the handler checks
-* 0.1.8 Updated loading to allow handler to be in the config section
-* 0.1.7 Added test for loading regular modules that don't have routes in them
-* 0.1.6 Updated loader to also look for the module export to be an array of route objects
-* 0.1.5 Got build running test on Travis.ci
-* 0.1.4 Added the build indicator to the readme
-* 0.1.3 Updated the package to have the tests and update the readme
-* 0.1.2 Added tests for the package
-* 0.1.1 Readme corrections for npm
-* 0.1.0 Initial release
+
+* 0.9.0 Initial release
