@@ -1,23 +1,23 @@
-# require-hapiroutes
+# require-fastifyroutes
 
-[![Build Status](https://travis-ci.org/brianoneil/require-hapiroutes.svg)](https://travis-ci.org/brianoneil/require-hapiroutes)
+[![Build Status](https://travis-ci.org/brianoneil/require-fastifyroutes.svg)](https://travis-ci.org/brianoneil/require-fastifyroutes)
 
-A module based on require-directory to load and manage hapi route definitions
+A module based on require-directory to load and manage Fastify route definitions
 
 ## Installation
 
   ```
-  npm install require-hapiroutes --save
+  npm install require-fastifyroutes --save
   ```
 ## Usage
 
 In the directory you want to define your routes, create an ```index.js``` file with the following code in it.  This will load all the routes in the directory (as well as all the modules like require-directory does).
 
 ```javascript
-//required file for require-hapiroutes.  Make it easier to setup routes to js files
+//required file for require-fastifyroutes.  Make it easier to setup routes to js files
 
-var requireHapiRoutes = require('require-hapiroutes');
-module.exports = requireHapiRoutes(module);
+var requireFastifyRoutes = require('require-fastifyroutes');
+module.exports = requireFastifyRoutes(module);
 ```
 
 In your module, you just require the directory and register the ```routes``` property with the server.  It will have all defined routes in the array from all the files.
@@ -29,13 +29,13 @@ server.route(routes.routes);
 
 This module uses the debug module for logging output.  To see logging output, set
  ```
- DEBUG=require-hapiroutes*
+ DEBUG=require-fastifyroutes*
  ```
 ## Defining Routes
 
 In your route file you can define the routes in a few ways.
 
-Export a property called ```routes``` on your module that is an array of HAPI route config objects.  Other exports will still be available from the
+Export a property called ```routes``` on your module that is an array of Fastify route config objects.  Other exports will still be available from the
 module if you use this way of loading routes *(be careful not to overwrite the object after you set the routes property as it will be lost)*
 
 Example of routes property:

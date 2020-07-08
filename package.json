@@ -1,30 +1,30 @@
 {
-  "name": "require-hapiroutes",
-  "version": "1.0.0",
-  "description": "Module to help organize and manage Hapi route definitions",
+  "name": "require-fastifyroutes",
+  "version": "0.9.0",
+  "description": "Module to help organize and manage Fastify route definitions",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/brianoneil/require-hapiroutes.git"
+    "url": "git@github.com:brianoneil/require-fastifyroutes.git"
   },
   "keywords": [
-    "hapi",
+    "fastify",
     "route"
   ],
   "author": "Brian O'Neil <brian.oneil@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brianoneil/require-hapiroutes/issues"
+    "url": "https://github.com/brianoneil/require-fastifyroutes/issues"
   },
-  "homepage": "https://github.com/brianoneil/require-hapiroutes",
+  "homepage": "https://github.com/brianoneil/require-fastifyroutes",
   "dependencies": {
     "debug": "^4.0.1",
     "require-directory": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "mocha": "^8.0.1"
   }
 }

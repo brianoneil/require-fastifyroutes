@@ -6,7 +6,7 @@ function isRoute(route) {
 
 
 module.exports = function(mod) {
-  var debug = require('debug')('require-hapiroutes:routediscovery')
+  var debug = require('debug')('require-fastifyroutes:routediscovery')
   var requireDirectory = require('require-directory');
   var dirModules = requireDirectory(mod);
   var routes = [];
