@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/brianoneil/require-fastifyroutes",
   "dependencies": {
-    "debug": "^4.0.1",
-    "require-directory": "^2.0.0"
+    "debug": "^4.3.4",
+    "require-directory": "^2.1.1"
   },
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "mocha": "^10.2.0"
   }
 }
