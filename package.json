@@ -1,6 +1,6 @@
 {
   "name": "require-fastifyroutes",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Module to help organize and manage Fastify route definitions",
   "main": "index.js",
   "scripts": {
