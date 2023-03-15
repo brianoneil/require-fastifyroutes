@@ -112,4 +112,5 @@ If you don't do either of these, it will just do the normal module loading stuff
 
 ## Release History
 
+* 0.10.0 Updated all package versions
 * 0.9.0 Initial release
