@@ -1,10 +1,15 @@
 {
   "name": "require-fastifyroutes",
-  "version": "0.11.0",
+  "version": "2.0.0",
   "description": "Module to help organize and manage Fastify route definitions",
   "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=14.8.0"
+  },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "c8 mocha",
+    "test:watch": "mocha --watch"
   },
   "repository": {
     "type": "git",
@@ -21,10 +26,11 @@
   },
   "homepage": "https://github.com/brianoneil/require-fastifyroutes",
   "dependencies": {
-    "debug": "^4.3.4",
-    "require-directory": "^2.1.1"
+    "debug": "^4.3.4"
   },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7",
+    "c8": "^8.0.1"
   }
 }

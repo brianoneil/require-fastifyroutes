@@ -1,22 +1,16 @@
-module.exports.routes = [
-  {
-    method : 'GET',
-    path : '/route1',
-    handler : function(req, reply) {},
-    config : {
-      description: 'my route1 description',
-      notes: 'Important stuff to know about this route',
-      tags : ['app']
+export default {
+  routes: [
+    {
+      path: '/multiroute1',
+      handler: async (request, reply) => {
+        return { route: 1 };
+      }
+    },
+    {
+      path: '/multiroute2',
+      handler: async (request, reply) => {
+        return { route: 2 };
+      }
     }
-  },
-  {
-    method : 'GET',
-    path : '/route2',
-    handler : function(req, reply) {},
-    config : {
-      description: 'my route1 description',
-      notes: 'Important stuff to know about this route',
-      tags : ['app']
-    }
-  }
-]
+  ]
+};

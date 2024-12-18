@@ -26,3 +26,12 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Coverage directory used by tools like istanbul
+.nyc_output
+
+# Coverage directory used by tools like istanbul
+.DS_Store

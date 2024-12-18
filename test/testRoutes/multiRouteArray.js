@@ -1,22 +1,14 @@
-module.exports = [
-{
-  method : 'GET',
-  path : '/route3',
-  handler : function(req, reply) {},
-  config : {
-    description: 'my route1 description',
-    notes: 'Important stuff to know about this route',
-    tags : ['app']
+export default [
+  {
+    path: '/arrayroute1',
+    handler: async (request, reply) => {
+      return { route: 1 };
+    }
+  },
+  {
+    path: '/arrayroute2',
+    handler: async (request, reply) => {
+      return { route: 2 };
+    }
   }
-},
-{
-  method : 'GET',
-  path : '/route4',
-  handler : function(req, reply) {},
-  config : {
-    description: 'my route1 description',
-    notes: 'Important stuff to know about this route',
-    tags : ['app']
-  }
-}
-]
+];
