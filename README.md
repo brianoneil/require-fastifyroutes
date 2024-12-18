@@ -1,6 +1,10 @@
 # require-fastifyroutes
 
-A module to automatically load and manage Fastify route definitions from a directory structure.
+A module to help organize and manage Fastify route definitions using ES Modules. This package automatically discovers and loads route files from a directory structure.
+
+## Requirements
+
+- Node.js >= 14.8.0 (for ES Modules support)
 
 ## Installation
 
@@ -10,22 +14,23 @@ npm install require-fastifyroutes --save
 
 ## Usage
 
-In the directory where you want to define your routes, create an `index.js` file with:
+### Basic Usage
+
+In your main application file:
 
 ```javascript
-const requireFastifyRoutes = require('require-fastifyroutes');
-module.exports = requireFastifyRoutes(module);
-```
+import Fastify from 'fastify';
+import routeLoader from 'require-fastifyroutes';
 
-Then in your main application file:
-
-```javascript
-const fastify = require('fastify')({ logger: true });
-const routes = require('./routes');
+const fastify = Fastify({ logger: true });
 
 // Register all routes
 const start = async () => {
   try {
+    // Load routes from a directory
+    const routes = await routeLoader('./routes');
+    
+    // Register routes with Fastify
     await fastify.register(async (instance) => {
       routes.routes.forEach(route => instance.route(route));
     });
@@ -40,9 +45,19 @@ const start = async () => {
 start();
 ```
 
-This module uses the debug module for logging output. To see logging output, set:
-```bash
-DEBUG=require-fastifyroutes*
+### Auto-Loading Routes
+
+You can use the `autoLoadModules` helper to manually load modules from a directory:
+
+```javascript
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { autoLoadModules } from 'require-fastifyroutes';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Auto-load all modules in the current directory
+export default await autoLoadModules(__dirname);
 ```
 
 ## Defining Routes
@@ -52,41 +67,27 @@ Routes can be defined in several ways:
 ### 1. Export a routes array:
 
 ```javascript
-module.exports.routes = [
-  {
-    method: 'GET',
-    url: '/route1', // Fastify uses 'url' instead of 'path'
-    handler: async (request, reply) => {
-      return { hello: 'world' }
-    },
-    schema: {  // Fastify uses 'schema' for validation and documentation
-      description: 'My route description',
-      tags: ['app'],
-      response: {
-        200: {
-          type: 'object',
-          properties: {
-            hello: { type: 'string' }
-          }
-        }
+export default {
+  routes: [
+    {
+      method: 'GET',
+      path: '/route1',
+      handler: async (request, reply) => {
+        return { hello: 'world' }
       }
     }
-  }
-];
+  ]
+};
 ```
 
 ### 2. Export a single route:
 
 ```javascript
-module.exports = {
+export default {
   method: 'GET',
-  url: '/route1',
+  path: '/route1',
   handler: async (request, reply) => {
     return { hello: 'world' }
-  },
-  schema: {
-    description: 'My route description',
-    tags: ['app']
   }
 };
 ```
@@ -94,47 +95,69 @@ module.exports = {
 ### 3. Export an array of routes:
 
 ```javascript
-module.exports = [
+export default [
   {
     method: 'GET',
-    url: '/route1',
+    path: '/route1',
     handler: async (request, reply) => {
       return { hello: 'world' }
     }
   },
   {
     method: 'POST',
-    url: '/route2',
+    path: '/route2',
     handler: async (request, reply) => {
-      const { body } = request
-      return body
-    },
-    schema: {
-      body: {
-        type: 'object',
-        required: ['message'],
-        properties: {
-          message: { type: 'string' }
-        }
-      }
+      const { body } = request;
+      return body;
     }
   }
 ];
 ```
 
-## Key Changes from Previous Versions
+## Features
 
-- Uses `url` instead of `path` in route definitions
-- Uses `schema` instead of `config` for route configuration
-- Supports async/await handlers
-- Uses Fastify's built-in schema validation
-- Supports TypeScript via type definitions (coming soon)
+- ESM Support: Uses native ES Modules
+- Auto-discovery: Automatically finds and loads route files
+- Flexible Route Definitions: Supports multiple ways to define routes
+- Error Handling: Gracefully handles various error cases
+- Type Safety: Uses optional chaining for safer property access
+- Directory Support: Works with both directory paths and import.meta.url
+
+## Debug Logging
+
+This module uses the debug module for logging output. To see logging output, set:
+```bash
+DEBUG=require-fastifyroutes*
+```
+
+## Error Handling
+
+The module handles various error cases:
+- Non-existent directories
+- Invalid route definitions
+- Syntax errors in route files
+- Circular dependencies
+- Missing file extensions
+- Invalid import URLs
+
+## API
+
+### Default Export
+```javascript
+import routeLoader from 'require-fastifyroutes';
+const routes = await routeLoader('./routes');
+```
+
+### Named Exports
+```javascript
+import { autoLoadModules } from 'require-fastifyroutes';
+const modules = await autoLoadModules('./routes');
+```
 
 ## Release History
 
-* 1.0.0 Updated for latest Fastify version with modern JavaScript features
-* 0.10.0 Updated all package versions
-* 0.9.0 Initial release
+* 2.0.0 Complete rewrite with ESM support and improved error handling
+* 1.0.0 Initial release
 
 ## License
 

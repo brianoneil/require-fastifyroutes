@@ -1,3 +1,3 @@
-module.exports = function () {
-    return 'hello world';
-}
+export const someFunction = () => {
+  return 'not a route';
+};
