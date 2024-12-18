@@ -1,5 +1,8 @@
 # require-fastifyroutes
 
+[![CI](https://github.com/brianoneil/require-fastifyroutes/actions/workflows/ci.yml/badge.svg)](https://github.com/brianoneil/require-fastifyroutes/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/brianoneil/require-fastifyroutes/badge.svg?branch=main)](https://coveralls.io/github/brianoneil/require-fastifyroutes?branch=main)
+
 A module to help organize and manage Fastify route definitions using ES Modules. This package automatically discovers and loads route files from a directory structure.
 
 ## Requirements
