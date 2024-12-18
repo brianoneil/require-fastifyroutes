@@ -7,7 +7,7 @@ A module to help organize and manage Fastify route definitions using ES Modules.
 
 ## Requirements
 
-- Node.js >= 14.8.0 (for ES Modules support)
+- Node.js >= 16.0.0
 
 ## Installation
 

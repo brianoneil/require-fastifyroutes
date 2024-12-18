@@ -1,11 +1,11 @@
 {
   "name": "require-fastifyroutes",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Module to help organize and manage Fastify route definitions",
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=14.8.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "test": "c8 mocha",
